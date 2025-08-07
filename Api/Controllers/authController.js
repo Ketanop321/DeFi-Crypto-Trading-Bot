@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const User = require('../Models/userModel')
+const User = require('../Model/userModel');
 const { id } = require('ethers');
 const { default: next } = require('next');
 
