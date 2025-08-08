@@ -29,5 +29,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# custom config
+#   config
 config.js
