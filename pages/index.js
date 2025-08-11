@@ -30,11 +30,43 @@ import {
 import {CONTEXT} from '../context/context';
 
 
-const index = () => {
-  const {TRADING_BOT} = useContext(CONTEXT)
-  return <div>
-    <h1>{TRADING_BOT}</h1>
-  </div>;
-};
+  const index = () => {
+    const {TRADING_BOT} = useContext(CONTEXT)
 
-export default index;
+    //STATE VARIABLE
+    const  [activeComponent, setActiveComponent] = useState('Signup')
+    const [membershipType, setMembershipType] = useState('premium')
+    const [authBackendEndID, setAuthBackEndID] = useState("")
+    const [networks, setNetworks] = useState("")
+
+
+    //NOTIFICATION
+    const notifyError = (msg)=> toast.error(msg, {duration: 2000})
+    const notifySuccess = (msg)=> toast.success(msg, {duration: 2000})
+    return (
+      <div>
+        <MovingSubmenu />
+        <Preloader />
+        {activeComponent === "Signup" ? (
+          <Signup
+            axios={axios}
+            setActiveComponent={setActiveComponent}
+            notifyError={notifyError}
+            notifySuccess={notifySuccess}
+          />
+        ) : (
+          "Home"
+        )}
+
+        {activeComponent == "Login" ? (
+          <Login setActiveComponent={setActiveComponent}  axios={axios} />
+        ) : (
+          ""
+        )
+
+        }
+      </div>
+    );
+  };
+
+  export default index;

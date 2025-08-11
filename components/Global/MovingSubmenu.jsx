@@ -2,7 +2,7 @@ import React from 'react'
 
 const MovingSubmenu = () => {
   return (
-    <div>
+    <div className='techwave_fn_fixedsub'>
       
     </div>
   )
