@@ -1,31 +1,32 @@
-import React , {useState} from 'react'
- 
-  const SideBarComponent = ({array,title, setActive, 
-    active , setActiveComponent}) => {
-        <div className='nav_group'>
-          <h2 className='group__title'>{title}</h2>
-          <ul className='group__list'>
-            {
-              array.map((menu, index) => (
-                <li key={index} onClick={() => setActiveComponent(menu.menu)} className={`fn__tooltip ${active === menu.menu ? "active" : ""} menu__item`}
-                 data-position="right"
-                 title={menu.menu} 
-                >
-                  <a onClick={() => setActive(menu.menu)}>
-                    <span className='icon'>
-                      <img src={menu.icon} className='fn_svg' alt="" />
-                    </span>
-                   <span className='text'>{menu.menu}</span>
-                  </a>
-              ))
-            }
-          </ul>
-        </div>
-    }
+import React, { useState } from 'react';
+
+const SideBarComponent = ({ array, title, setActive, active, setActiveComponent }) => {
+  return (
+    <div className='nav_group'>
+      <h2 className='group__title'>{title}</h2>
+      <ul className='group__list'>
+        {
+          array.map((menu, index) => (
+            <li key={index} onClick={() => setActiveComponent(menu.menu)} className={`fn__tooltip ${active === menu.menu ? "active" : ""} menu__item`}
+              data-position="right"
+              title={menu.menu}
+            >
+              <a onClick={() => setActive(menu.menu)}>
+                <span className='icon'>
+                  <img src={menu.icon} className='fn_svg' alt="" />
+                </span>
+                <span className='text'>{menu.menu}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  );
+};
 
 const SideBar = ({ setActiveComponent }) => {
   const [active, setActive] = useState("Home");
-
 
   const array1 = [
     {
@@ -65,80 +66,73 @@ const SideBar = ({ setActiveComponent }) => {
     },
   ];
 
-  const logout = () =>{
-    localStorage.removeItem("CryptoAUT_TOKEN")
-
-    window.location.reload()
-  }
-
-
+  const logout = () => {
+    localStorage.removeItem("CryptoAUT_TOKEN");
+    window.location.reload();
+  };
 
   return (
     <div className='techwave_fun_leftpanel'>
-       <div className='mobile_extra_closer'></div>
-       <div className='leftpanel_logo'>
+      <div className='mobile_extra_closer'></div>
+      <div className='leftpanel_logo'>
         <a href="fn_logo">
           <span className='full_logo'>
-            <img src="img/light-logo.png" 
-            className='desktop_logo'
-            alt="" />
-            <img src="img/light-logo.png" 
-            className='retain_logo'
-            alt="" />
+            <img src="img/light-logo.png"
+              className='desktop_logo'
+              alt="" />
+            <img src="img/light-logo.png"
+              className='retain_logo'
+              alt="" />
           </span>
           <span className='short_logo'>
-            <img src="img/logo-desktop-mini.png" 
-            className='desktop_logo'
-            alt="" />
-            <img src="img/crypto.png" 
-            className='retain_logo'
-            alt="" />
+            <img src="img/logo-desktop-mini.png"
+              className='desktop_logo'
+              alt="" />
+            <img src="img/crypto.png"
+              className='retain_logo'
+              alt="" />
           </span>
         </a>
         <a href="#" className='fun__closer fun__iciono_button desktop_closer'>
-          <img src="img/light-icon/light-22.png" alt="  "
-           className='fn__svg'
+          <img src="img/light-icon/light-22.png" alt=""
+            className='fn__svg'
           />
         </a>
         <a href="#" className='fun__closer fun__iciono_button mobile_closer'>
-          <img src="img/light-icon/light-22.png" alt="  "
-           className='fn__svg'
+          <img src="img/light-icon/light-22.png" alt=""
+            className='fn__svg'
           />
         </a>
-       </div>
+      </div>
 
-        {/*component*/}
+      {/*component*/}
 
-        <div className='leftpanel_content'>
-          <SideBarComponent setActiveComponent=
-          {setActiveComponent} setActive={setActive}
-          active={active} array={array1} title ="start here"/>
-        </div>
-          <SideBarComponent setActiveComponent=
-          {setActiveComponent} setActive={setActive}
-          active={active} array={array2} title ="user Tools"/>
-        </div>
+      <div className='leftpanel_content'>
+        <SideBarComponent setActiveComponent={setActiveComponent} setActive={setActive}
+          active={active} array={array1} title="start here" />
 
-        <div className='nav_group'>
-          <h2 className='group__title'>COntrols</h2>
-          <ul className='group_list'>
-            <li className='' onClick={() => logout()}>
- 
-              <a className='fn__tooltip menu__item'
+        <SideBarComponent setActiveComponent={setActiveComponent} setActive={setActive}
+          active={active} array={array2} title="user Tools" />
+      </div>
+
+      <div className='nav_group'>
+        <h2 className='group__title'>Controls</h2>
+        <ul className='group__list'>
+          <li className='' onClick={() => logout()}>
+            <a className='fn__tooltip menu__item'
               data-position="right"
               title="Logout"
-              >
-                <span className='icon'>
-                  <img src="img/lighticon/light-18.png" alt="" className='fn_svg' />
-                </span>
-                <span className='text'>{"Logout"}</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
+            >
+              <span className='icon'>
+                <img src="img/lighticon/light-18.png" alt="" className='fn_svg' />
+              </span>
+              <span className='text'>{"Logout"}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;
