@@ -55,12 +55,50 @@ import {CONTEXT} from '../context/context';
             notifySuccess={notifySuccess}
           />
         ) : (
-          "Home"
+          <div className="techwave_fn_wrapper">
+             <div className="tech_fn_wrap">
+              <Search/>
+              <Header networkName={networkName}
+              setActiveComponent={setActiveComponent}
+              />
+              <SideBar setActiveComponent={setActiveComponent} />
+              {
+                activeComponent == "Home" ? (
+                  <Home />
+                ) : activeComponent == "TradeTokens" ? (
+                  <TradeTokens />
+                ) : activeComponent == "Top Exchange Tokens" ? (
+                  <TopExchangeTokens />
+                ) : activeComponent == "Networks" ? (
+                  <Networks networkName={networkName}  
+                  setNetworkName={setNetworkName} />
+                ) : activeComponent == "Trading" ? (
+                  <Trading  axios={axios}
+                  trading={}/>
+                ) : activeComponent == "pricing" ? (
+                  <Price />
+                ) :activeComponent == "Profile" ? (
+                  <Profile setActiveComponent= {setActiveComponent} />
+                ) : activeComponent == "Setting" ? (
+                  <Setting  />
+                ) :  activeComponent == "Add Token Pair" ? (
+                  <AddTokenPair />
+                ) : (
+                  ""
+                )
+              }
+             </div>
+          </div>
         )}
 
         {activeComponent == "Login" ? (
-          <Login setActiveComponent={setActiveComponent}  axios={axios} />
+          <Login setActiveComponent={setActiveComponent}  
+          axios={axios} 
+          notifyError={notifyError}
+          notifySuccess={notifySuccess}
+            />
         ) : (
+
           ""
         )
 
