@@ -37,7 +37,8 @@ import {CONTEXT} from '../context/context';
     const  [activeComponent, setActiveComponent] = useState('Signup')
     const [membershipType, setMembershipType] = useState('premium')
     const [authBackendEndID, setAuthBackEndID] = useState("")
-    const [networks, setNetworks] = useState("")
+    const [networks, setNetworks] = useState({})
+    const [networkName, setNetworkName] = useState("")
 
 
     //NOTIFICATION
